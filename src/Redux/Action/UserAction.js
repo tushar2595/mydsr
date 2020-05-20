@@ -8,7 +8,7 @@ export const fetchUsers = () => {
   return (dispatch) => {
     dispatch(fetchUsersRequest())
     axios
-      .get('http://localhost:8000/posts')
+      .get('https://my-dsr.herokuapp.com/posts')
       .then(response => {
         // response.data is the users
         const users = response.data

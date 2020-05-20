@@ -52,7 +52,7 @@ class Creater extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className={'creater-class'}>
         <Jumbotron>
           <h1 className="display-3">Hello, world!</h1>
           <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
