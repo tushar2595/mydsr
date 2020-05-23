@@ -1,6 +1,7 @@
 export function PostData(type, userData) {
-  let baseUrl = "https://reqres.in/api/";
+  let baseUrl = "https://my-dsr.herokuapp.com";
   return new Promise((resolve, reject) => {
+    console.log(userData, 'hhhhhhhhhh');
     fetch(baseUrl + type,
       {
         method: 'POST',

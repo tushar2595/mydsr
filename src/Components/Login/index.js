@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import CustomButton from '../Common/CustomButton';
-import { PostData } from '../../Services';
+//import { PostData } from '../../Services';
 import './style.scss';
 class Login extends React.Component {
   constructor(props) {
@@ -14,18 +14,18 @@ class Login extends React.Component {
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
   }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    PostData('login', this.state
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   PostData('login', this.state
 
-    ).then((result) => {
-      console.log(this.state, 'sndjns')
-      let responseJSON = result;
-      console.log(responseJSON);
-    })
-    console.log(this.state.email);
-    console.log(this.state.password);
-  }
+  //   ).then((result) => {
+  //     console.log(this.state, 'sndjns')
+  //     let responseJSON = result;
+  //     console.log(responseJSON);
+  //   })
+  //   console.log(this.state.email);
+  //   console.log(this.state.password);
+  // }
 
 
   render() {
