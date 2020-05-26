@@ -36,11 +36,13 @@ class Login extends React.Component {
     }
   }
   handleSubmit = (e) => {
+    var ls = require('local-storage');
     e.preventDefault();
     let userData = { email: this.state.email, password: this.state.password }
     login('login', userData).then((result) => {
       let responseJSON = result;
       if (responseJSON.success === true) {
+        ls.set('token', responseJSON.token)
         this.setState({
           redirect: true
         })
