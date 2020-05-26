@@ -3,12 +3,16 @@ import TextField from '@material-ui/core/TextField';
 import CustomButton from '../Common/CustomButton';
 //import { PostData } from '../../Services';
 import './style.scss';
+import { login } from '../../Services/index';
+import { Redirect } from 'react-router-dom';
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      redirect: false
     }
   }
   handleChange = (evt) => {
@@ -26,11 +30,30 @@ class Login extends React.Component {
   //   console.log(this.state.email);
   //   console.log(this.state.password);
   // }
+  renderHome = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/home' />
+    }
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let userData = { email: this.state.email, password: this.state.password }
+    login('login', userData).then((result) => {
+      let responseJSON = result;
+      if (responseJSON.success === true) {
+        this.setState({
+          redirect: true
+        })
+      }
+      console.log(responseJSON, 'ooooooooooo')
 
+    });
+  }
 
   render() {
     return (
       <div className={'login-container'}>
+        {this.renderHome()}
         <form onSubmit={this.handleSubmit}>
           <div >
             <TextField
