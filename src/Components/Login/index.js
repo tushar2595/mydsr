@@ -5,6 +5,8 @@ import CustomButton from '../Common/CustomButton';
 import './style.scss';
 import { login } from '../../Services/index';
 import { Redirect } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import Googlelogin from './googleLogin';
 
 class Login extends React.Component {
   constructor(props) {
@@ -55,34 +57,49 @@ class Login extends React.Component {
   render() {
     return (
       <div className={'login-container'}>
+        <Col className={'title-container'}>
+          <h3>My DSR</h3>
+        </Col>
+
+
         {this.renderHome()}
         <form onSubmit={this.handleSubmit}>
-          <div >
-            <TextField
-              className={'email-container'}
-              name={'email'}
-              label="email"
-              variant="outlined"
-              type="text"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div >
-            <TextField
-              className={'password-container'}
-              name={'password'}
-              label="password"
-              variant="outlined"
-              type="password"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className={'login-btn'}>
-            <CustomButton htmlType={'submit'} label={'login'} />
+          <div className={'form-container'}>
+            <Col >
+              <TextField
+                className={'email-container'}
+                name={'email'}
+                label="email"
+                variant="outlined"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </Col>
+            <Col >
+              <TextField
+                className={'password-container'}
+                name={'password'}
+                label="password"
+                variant="outlined"
+                type="password"
+                onChange={this.handleChange}
+              />
+            </Col>
+            <Col>
+              <p>Forget password?</p>
+              <CustomButton htmlType={'submit'} label={'login'} className={'ant-btn'} />
+            </Col>
           </div>
         </form>
+        <Col className={'d-flex justify-content-center p-2'}>
+          <p>Not a member?<span style={{ color: "red" }}>Sign up </span></p>
+        </Col>
+        <Col className={'google-btn'}>
+          Sign in with
+          <Googlelogin />
 
-      </div>
+        </Col>
+      </div >
     )
   }
 }

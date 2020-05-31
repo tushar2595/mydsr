@@ -5,10 +5,17 @@ export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE'
 
 
 export const fetchUsers = () => {
+  var ls = require('local-storage');
+  var tok = ls.get('token');
   return (dispatch) => {
     dispatch(fetchUsersRequest())
-    axios
-      .get('https://my-dsr.herokuapp.com/api/posts')
+    // axios
+    //   .get('https://my-dsr.herokuapp.com/api/posts')
+    axios({
+      method: 'get',
+      url: 'https://my-dsr.herokuapp.com/api/posts',
+      headers: { 'auth-token': tok }
+    })
       .then(response => {
         // response.data is the users
         const users = response.data
